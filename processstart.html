@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>iFlow - Process Start</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #ffffff;
+    }
+    .sidebar {
+      background-color: #1f3452;
+      color: white;
+      width: 200px;
+      height: 100vh;
+      position: fixed;
+      top: 0;
+      left: 0;
+      padding-top: 20px;
+    }
+    .sidebar h2 {
+      text-align: center;
+      margin-bottom: 40px;
+      font-size: 24px;
+    }
+    .sidebar a {
+      display: block;
+      padding: 10px 20px;
+      color: white;
+      text-decoration: none;
+    }
+    .sidebar a:hover {
+      background-color: #356091;
+    }
+    .sidebar a.active {
+      background: #72ace6;
+      pointer-events: none;
+      cursor: default;
+    }
+    .main {
+      margin-left: 200px;
+      padding: 20px;
+    }
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .topbar h1 {
+      color: #131194;
+    }
+    .topbar button {
+      background-color: #16177e;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body style="background: #f7f7f9;">
+  <div class="sidebar">
+    <h2>iFlow</h2>
+    <a href="dashboard.html">Dashboard</a>
+    <a href="tasklist.html">Task List</a>
+    <a href="processlist.html">Process List</a>
+    <a href="processstart.html" class="active">Process Start</a>
+    <a href="filemanager.html">File Manager</a>
+    <a href="newscenario.html">New Scenario +</a>
+  </div>
+  <div class="main" style="display: flex; justify-content: center; align-items: center; min-height: 100vh; background: #f7f7f9;">
+    <div style="width: 480px; background: #fff; border-radius: 12px; box-shadow: 0 2px 16px 0 rgba(30,34,40,0.10); padding: 36px 32px 32px 32px; margin-top: 32px;">
+      <div style="margin-bottom: 18px;">
+        <h2 style="margin: 0 0 6px 0; font-size: 1.6rem; font-weight: 600;">Start process</h2>
+        <div style="color: #6b7280; font-size: 14px; margin-bottom: 12px; display: flex; align-items: center; gap: 4px;">
+          <span style="font-size: 16px;">&#9432;</span> Click on the process to start.
+        </div>
+        <div style="display: flex; gap: 10px; align-items: center; margin-bottom: 12px;">
+          <input type="text" placeholder="Search by process name." style="flex: 1; padding: 7px 12px; border: 1px solid #e5e7eb; border-radius: 6px; font-size: 15px; outline: none;">
+        </div>
+        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 18px;">
+          <select id="processSelect" style="flex: 1; padding: 7px 12px; border: 2px solid #2196f3; border-radius: 6px; font-size: 15px; color: #1976d2; font-weight: 600; background: #f8fbff;">
+            <option value="Invoice Receipt (v1)">Invoice Receipt (v1)</option>
+            <option value="Review Invoice (v1)">Review Invoice (v1)</option>
+          </select>
+          <div style="display: flex; align-items: center; gap: 6px;">
+            <button style="background: none; border: none; color: #bdbdbd; font-size: 18px; cursor: pointer;">&lt;</button>
+            <span style="display: inline-block; min-width: 28px; text-align: center; border: 1px solid #e3e3e3; border-radius: 6px; padding: 2px 8px; color: #2196f3; font-weight: 600; background: #fff;">1</span>
+            <button style="background: none; border: none; color: #bdbdbd; font-size: 18px; cursor: pointer;">&gt;</button>
+          </div>
+        </div>
+      </div>
+      <form id="processForm">
+        <div style="background: #fafbfc; border-radius: 10px; padding: 24px 20px 20px 20px; margin-bottom: 18px; border: 1px solid #f0f0f0;">
+          <div style="margin-bottom: 18px;">
+            <label style="font-weight: 500; color: #e53935;">* Upload your Invoice Document</label><br>
+            <label style="display: flex; align-items: center; gap: 8px; margin-top: 6px;">
+              <input type="file" id="fileInput" style="display:none;" />
+              <button type="button" id="fileBtn" style="border: 1px solid #bdbdbd; background: #f7f7f9; color: #222; border-radius: 6px; padding: 6px 16px; font-size: 15px; cursor: pointer;">&#128194; Select File</button>
+              <span id="fileName" style="font-size:13px;color:#1976d2;"></span>
+            </label>
+          </div>
+          <div style="margin-bottom: 18px;">
+            <label style="font-weight: 500; color: #e53935;">* Creditor</label><br>
+            <input type="text" id="creditor" style="width: 100%; margin-top: 6px; padding: 8px 10px; border: 1px solid #e0e0e0; border-radius: 6px; font-size: 15px;" required />
+          </div>
+          <div style="margin-bottom: 18px;">
+            <label style="font-weight: 500; color: #e53935;">* Amount</label><br>
+            <input type="number" id="amount" style="width: 100%; margin-top: 6px; padding: 8px 10px; border: 1px solid #e0e0e0; border-radius: 6px; font-size: 15px;" required />
+          </div>
+          <div style="margin-bottom: 18px;">
+            <label style="font-weight: 500; color: #e53935;">* Invoice Category</label><br>
+            <select id="category" style="width: 100%; margin-top: 6px; padding: 8px 10px; border: 1px solid #e0e0e0; border-radius: 6px; font-size: 15px;" required>
+              <option value="">Select category</option>
+              <option value="Goods">Goods</option>
+              <option value="Services">Services</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          <div style="margin-bottom: 0;">
+            <label style="font-weight: 500; color: #e53935;">* Invoice Number</label><br>
+            <input type="text" id="invoiceNumber" style="width: 100%; margin-top: 6px; padding: 8px 10px; border: 1px solid #e0e0e0; border-radius: 6px; font-size: 15px;" required />
+          </div>
+        </div>
+        <div style="display: flex; justify-content: flex-end; gap: 10px;">
+          <button type="button" style="background: #f3f3f3; color: #222; border: 1px solid #e0e0e0; border-radius: 6px; padding: 8px 18px; font-size: 15px; cursor: pointer;">Back</button>
+          <button type="submit" style="background: #1976d2; color: #fff; border: none; border-radius: 6px; padding: 8px 18px; font-size: 15px; font-weight: 500; cursor: pointer;">Start Process</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <script>
+    // Logout fonksiyonu
+    function logout() {
+      localStorage.clear();
+      window.location.href = "login.html";
+    }
+
+    // Dosya seçme butonu
+    document.getElementById('fileBtn').onclick = function() {
+      document.getElementById('fileInput').click();
+    };
+    document.getElementById('fileInput').onchange = function(e) {
+      const file = e.target.files[0];
+      document.getElementById('fileName').textContent = file ? file.name : '';
+    };
+
+    // Start Process işlemi
+    document.getElementById('processForm').onsubmit = function(e) {
+      e.preventDefault();
+      const processName = document.getElementById('processSelect').value;
+      const creditor = document.getElementById('creditor').value;
+      const amount = document.getElementById('amount').value;
+      const category = document.getElementById('category').value;
+      const invoiceNumber = document.getElementById('invoiceNumber').value;
+      const fileInput = document.getElementById('fileInput');
+      const fileName = fileInput.files[0] ? fileInput.files[0].name : '';
+      // Bugünün tarihi (gg.aa.yyyy)
+      const today = new Date();
+      const createDate = (today.getDate()<10?'0':'') + today.getDate() + '.' + ((today.getMonth()+1)<10?'0':'') + (today.getMonth()+1) + '.' + today.getFullYear();
+      // Process Instance ID oluştur (ör: P011)
+      let processList = JSON.parse(localStorage.getItem('processList') || '[]');
+      let newId = 'P' + (processList.length + 1).toString().padStart(3, '0');
+      processList.push({
+        id: newId,
+        process: processName.includes('Review') ? 'Review Invoice' : 'Invoice',
+        user: '-',
+        createDate: createDate,
+        endDate: '',
+        status: 'Continues',
+        file: fileName,
+        creditor,
+        amount,
+        category,
+        invoiceNumber
+      });
+      localStorage.setItem('processList', JSON.stringify(processList));
+      window.location.href = 'processlist.html';
+    };
+  </script>
+</body>
+</html>

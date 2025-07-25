@@ -161,7 +161,7 @@
   <div class="main">
     <div class="topbar">
       <h1>iFlow - Dashboard</h1>
-      <button>LogOut</button>
+      <button onclick="logout()">LogOut</button>
     </div>
     <div class="cards">
       <div class="card">
@@ -188,21 +188,6 @@
         <span class="card-value">4</span>
         <div class="card-title">Open User Tasks</div>
       </div>
-  <script>
-    // Dynamically set the progress for each circle based on value/max
-    document.querySelectorAll('.circle-chart .circle').forEach(function(circle) {
-      var value = parseInt(circle.getAttribute('data-value'));
-      var max = parseInt(circle.getAttribute('data-max'));
-      if (!isNaN(value) && !isNaN(max) && max > 0) {
-        var percent = Math.max(0, Math.min(1, value / max));
-        var circumference = 2 * Math.PI * 16;
-        var dash = Math.round(percent * circumference);
-        var gap = Math.round(circumference - dash);
-        circle.setAttribute('stroke-dasharray', dash + ' ' + gap);
-        circle.setAttribute('stroke-dashoffset', 0);
-      }
-    });
-  </script>
     </div>
 
     <h2>User Task</h2>
@@ -229,5 +214,27 @@
       <tr><td>e92c...0001</td><td>failedJob</td><td>ENGINE-09008 Exception while instantiating class...</td><td>invoice1a3...0001</td></tr>
     </table>
   </div>
+
+  <script>
+    // Logout fonksiyonu
+    function logout() {
+      localStorage.clear();
+      window.location.href = "login.html";
+    }
+
+    // Circle chart ayarı
+    document.querySelectorAll('.circle-chart .circle').forEach(function(circle) {
+      var value = parseInt(circle.getAttribute('data-value'));
+      var max = parseInt(circle.getAttribute('data-max'));
+      if (!isNaN(value) && !isNaN(max) && max > 0) {
+        var percent = Math.max(0, Math.min(1, value / max));
+        var circumference = 2 * Math.PI * 16;
+        var dash = Math.round(percent * circumference);
+        var gap = Math.round(circumference - dash);
+        circle.setAttribute('stroke-dasharray', dash + ' ' + gap);
+        circle.setAttribute('stroke-dashoffset', 0);
+      }
+    });
+  </script>
 </body>
 </html>

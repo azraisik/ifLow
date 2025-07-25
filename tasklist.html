@@ -85,6 +85,7 @@
       margin-top: 20px;
     }
   </style>
+</head>
 <body>
   <div class="sidebar">
     <h2>iFlow</h2>
@@ -113,6 +114,12 @@
           link.classList.add('active');
         }
       });
+
+      // LogOut butonuna tıklayınca login.html sayfasına git
+      const logoutBtn = document.querySelector('.topbar button');
+      logoutBtn.addEventListener('click', function() {
+        window.location.href = 'login.html';
+      });
     });
   </script>
   <div class="main">
@@ -125,28 +132,28 @@
         <tr style="background:#fafafa;">
           <th class="taskname" style="padding:10px; border-bottom:1px solid #eee; max-width:100px;">Task Name</th>
           <th style="padding:10px; border-bottom:1px solid #eee;">Assigned</th>
-         <th style="padding:10px; border-bottom:1px solid #eee; border-left:2px solid #e0e0e0; max-width:100px;">Create Date</th>
-         <th style="padding:10px; border-bottom:1px solid #eee;">Status</th>
-         <th style="padding:10px; border-bottom:1px solid #eee; max-width:100px;">End Date</th>
-         <th style="padding:10px; border-bottom:1px solid #eee; max-width:100px;">Due Date</th>
+          <th style="padding:10px; border-bottom:1px solid #eee; border-left:2px solid #e0e0e0; max-width:100px;">Create Date</th>
+          <th style="padding:10px; border-bottom:1px solid #eee;">Status</th>
+          <th style="padding:10px; border-bottom:1px solid #eee; max-width:100px;">End Date</th>
+          <th style="padding:10px; border-bottom:1px solid #eee; max-width:100px;">Due Date</th>
         </tr>
       </thead>
       <tbody>
         <tr>
           <td class="taskname" style="padding:10px; border-bottom:1px solid #eee; max-width:100px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">Review Invoice</td>
           <td style="padding:10px; border-bottom:1px solid #eee;">unassigned</td>
-         <td style="padding:10px; border-bottom:1px solid #eee; border-left:2px solid #e0e0e0; max-width:120px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">21.07.2025 08:12:34</td>
+          <td style="padding:10px; border-bottom:1px solid #eee; border-left:2px solid #e0e0e0; max-width:120px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">21.07.2025 08:12:34</td>
           <td style="padding:10px; border-bottom:1px solid #eee;"><span class="status active">Active</span></td>
-         <td style="padding:10px; border-bottom:1px solid #eee; max-width:120px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">29.07.2025 09:15:22</td>
-         <td style="padding:10px; border-bottom:1px solid #eee; max-width:120px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">24.07.2025 13:22:11</td>
+          <td style="padding:10px; border-bottom:1px solid #eee; max-width:120px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">29.07.2025 09:15:22</td>
+          <td style="padding:10px; border-bottom:1px solid #eee; max-width:120px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">24.07.2025 13:22:11</td>
         </tr>
         <tr>
           <td class="taskname" style="padding:10px; border-bottom:1px solid #eee; max-width:100px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">Assign Reviewer</td>
           <td style="padding:10px; border-bottom:1px solid #eee;">iflow-admin</td>
-         <td style="padding:10px; border-bottom:1px solid #eee; border-left:2px solid #e0e0e0; max-width:120px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">21.07.2025 09:45:12</td>
+          <td style="padding:10px; border-bottom:1px solid #eee; border-left:2px solid #e0e0e0; max-width:120px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">21.07.2025 09:45:12</td>
           <td style="padding:10px; border-bottom:1px solid #eee;"><span class="status completed">Completed</span></td>
-         <td style="padding:10px; border-bottom:1px solid #eee; max-width:120px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">27.07.2025 10:32:44</td>
-         <td style="padding:10px; border-bottom:1px solid #eee; max-width:120px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">28.07.2025 16:45:09</td>
+          <td style="padding:10px; border-bottom:1px solid #eee; max-width:120px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">27.07.2025 10:32:44</td>
+          <td style="padding:10px; border-bottom:1px solid #eee; max-width:120px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">28.07.2025 16:45:09</td>
         </tr>
         <tr>
           <td class="taskname" style="padding:10px; border-bottom:1px solid #eee; max-width:100px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">Prepare Bank Transfer</td>
@@ -231,18 +238,26 @@
         <tr>
           <td class="taskname" style="padding:10px; border-bottom:1px solid #eee; max-width:100px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">Assign Reviewer</td>
           <td style="padding:10px; border-bottom:1px solid #eee;">iflow-admin</td>
-          <td style="padding:10px; border-bottom:1px solid #eee; border-left:2px solid #e0e0e0;">21.07.2025 22:44:51</td>
+          <td style="padding:10px; border-bottom:1px solid #eee; border-left:2px solid #e0e0e0;">21.07.2025 22:34:22</td>
           <td style="padding:10px; border-bottom:1px solid #eee;"><span class="status completed">Completed</span></td>
-          <td style="padding:10px; border-bottom:1px solid #eee;">22.07.2025 23:33:12</td>
-          <td style="padding:10px; border-bottom:1px solid #eee;">23.07.2025 22:44:51</td>
+          <td style="padding:10px; border-bottom:1px solid #eee;">22.07.2025 23:12:11</td>
+          <td style="padding:10px; border-bottom:1px solid #eee;">28.07.2025 22:34:22</td>
         </tr>
         <tr>
           <td class="taskname" style="padding:10px; border-bottom:1px solid #eee; max-width:100px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">Review Invoice</td>
           <td style="padding:10px; border-bottom:1px solid #eee;">unassigned</td>
-          <td style="padding:10px; border-bottom:1px solid #eee; border-left:2px solid #e0e0e0;">21.07.2025 23:59:39</td>
+          <td style="padding:10px; border-bottom:1px solid #eee; border-left:2px solid #e0e0e0;">21.07.2025 23:50:01</td>
           <td style="padding:10px; border-bottom:1px solid #eee;"><span class="status active">Active</span></td>
-          <td style="padding:10px; border-bottom:1px solid #eee;">22.07.2025 00:44:11</td>
-          <td style="padding:10px; border-bottom:1px solid #eee;">29.07.2025 23:59:39</td>
+          <td style="padding:10px; border-bottom:1px solid #eee;">22.07.2025 23:59:59</td>
+          <td style="padding:10px; border-bottom:1px solid #eee;">30.07.2025 23:50:01</td>
+        </tr>
+        <tr>
+          <td class="taskname" style="padding:10px; border-bottom:1px solid #eee; max-width:100px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">Prepare Bank Transfer</td>
+          <td style="padding:10px; border-bottom:1px solid #eee;">iflow-admin</td>
+          <td style="padding:10px; border-bottom:1px solid #eee; border-left:2px solid #e0e0e0;">22.07.2025 00:10:45</td>
+          <td style="padding:10px; border-bottom:1px solid #eee;"><span class="status completed">Completed</span></td>
+          <td style="padding:10px; border-bottom:1px solid #eee;">23.07.2025 01:01:33</td>
+          <td style="padding:10px; border-bottom:1px solid #eee;">29.07.2025 02:15:21</td>
         </tr>
       </tbody>
     </table>
